@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+        * {
+            margin: 0;
+        }
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cairo', sans-serif;
+        }
+        .container {
+            padding: 50px;
+            background-color: white;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10%;
+        }
+        input {
+            width: 250px;
+            height: 30px;
+            margin-bottom: 10px;
+            border-radius: 50px;
+            margin-top: 10px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            font-family: 'Cairo', sans-serif;
+            background-color: white;
+            border: black 1px solid;
+            cursor: pointer;
+            border-radius: 50px;
+            width: 80px;
+            height: 40px;
+        }
+        button:hover {
+            background-color: black;
+            color: white;
+        }
+        .hero-image{
+            position: absolute;
+            background: linear-gradient(0deg, rgba(22, 22, 22, 0.57) 0%, rgba(22, 22, 22, 0.57) 100%), url(./hero.jpg), lightgray 50% / cover no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;   
+            z-index: -999;
+            filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-image">
+    </div>
+    <div class="container">
+    <h1>برنامج حساب ال BMI :</h1>
+    <h3>ادخل طولك(m):</h3>
+    <input type="number" id="my-lenght" >
+    <h3>ادخل وزنك(kg):</h3>
+    <input type="number" id="my-weight" >
+    <br>
+    <button id="my-btn" >النتيجة</button>
+    <h3 id="my-bmi"></h3>
+    <p id="my-para"></p>
+    </div>
+    <script>
+     
+     
+     document.getElementById("my-btn").addEventListener("click", function(){
+        let myLenght = document.getElementById("my-lenght").value
+        let myWeight = document.getElementById("my-weight").value
+        let mySqr = myLenght*myLenght
+        let myBmi = myWeight / mySqr
+        document.getElementById("my-bmi").innerHTML = `BMI = ${myBmi.toFixed(1)}`
+        if(myBmi < 18){
+            document.getElementById("my-para").innerHTML = "أنت نحيف "
+        }else if(myBmi>=18 && myBmi<=24.9){
+            document.getElementById("my-para").innerHTML = " وزنك مثالي "
+        }else if (myBmi>=25 && myBmi<=29.9){
+            document.getElementById("my-para").innerHTML = " لديك وزن زائد"
+        }else if (myBmi>=30 && myBmi<=34.9){
+            document.getElementById("my-para").innerHTML = "سمنة من الدرجة الأولى"
+        }else if (myBmi>=35 && myBmi<=39.9){
+            document.getElementById("my-para").innerHTML = "سمنة من الدرجة الثانية"
+        }else if (myBmi>=40){
+            document.getElementById("my-para").innerHTML = "سمنة من الدرجة الثالثة"
+        }else {
+            document.getElementById("my-para").innerHTML = "من فضلك أدخل قيمة صحيحة"
+        }
+     })
+     
+  
+   
+     
+     
+    </script>
+</body>
+</html>
+
+<!--
+      
+-->
